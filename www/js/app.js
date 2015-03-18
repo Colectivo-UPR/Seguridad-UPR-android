@@ -18,6 +18,44 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    //Main part of the code
+    cordova.getAppVersion(function(version) {
+      appVersion = version;
+      console.info("Version: " + appVersion);
+      registerPushNotification();
+    });
+
+    var androidConfig = {
+      "senderID":"GOOGLE_PROJECT_API_KEY", //This is the project/sender ID from Google, created in Part A
+      "ecb":"onAndroidNotification" //This is the function we will call when a push notification arrives. This will be detailed in the next step.
+    };
+
+    storedPushNotificationId = $localStorage.get("pushNotificationId", "");
+    storedRegisteredAppVersion = $localStorage.get("registeredAppVersion", "");
+    var shouldRegister = false;
+
+    var registerPushNotification = function() {
+      if (storedPushNotificationId == "") {
+        shouldRegister = true;
+      }
+      else {
+        if (storedRegisteredAppVersion != appVersion) {
+          shouldRegister = true;
+        }
+      }
+
+      if (shouldRegister) {
+        if (device.platform == "Android") {
+          $cordovaPush.register(androidConfig).then(function(result) {
+            console.info('$cordovaPush.register succeeded. Result: '+ result);
+          }, function(err) {
+            console.info('$cordovaPush.register failed. Error: ' + err);
+          });
+        }
+      }
+      //End of main part of the code
+    };
   });
 })
 
@@ -28,6 +66,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
+
+    .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
+    })
 
     // setup an abstract state for the tabs directive
     .state('tab', {
@@ -45,6 +95,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-alertas': {
           templateUrl: 'templates/tab-alertas.html',
           controller: 'AlertCtrl'
+        }
+      }
+    })
+
+    .state('tab.reportes', {
+      url: '/reportes',
+      views: {
+        'tab-reportes': {
+          templateUrl: 'templates/tab-reportes.html',
+          controller: 'RepCtrl'
         }
       }
     })
@@ -91,7 +151,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/alertas');
+  $urlRouterProvider.otherwise('/login');
+
+
 
 });
 

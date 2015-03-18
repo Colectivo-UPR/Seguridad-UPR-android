@@ -1,33 +1,17 @@
 <ion-view title="Recursos">
   <ion-content class="padding">
-    <div class="list card">
+
+  	<ion-refresher
+      pulling-text="Actualizando servicios"
+      on-refresh="getServices()">
+    </ion-refresher>
+
+    <div class="list card" ng-repeat="recurso in recursos">
 
 	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Oficina de Seguridad</h2>
-	    <p>787 XXX XXXX</p>
-	    <img src="../img/green-phone.png" style="position:absolute; top:21px; right:16px; width:30px; ">
-	  </div>
-
-	</div>
-
-	<div class="list card">
-
-	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Oficina de Seguridad</h2>
-	    <p>787 XXX XXXX</p>
-	    <img src="../img/green-phone.png" style="position:absolute; top:21px; right:16px; width:30px; ">
-	  </div>
-
-	</div>
-
-	<div class="list card">
-
-	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Oficina de Seguridad</h2>
-	    <p>787 XXX XXXX</p>
+	    <img src="../img/small-map.png" >
+	    <h3 style="width:80%;">{{ recurso.name }}</h3>
+	    <p>{{ recurso.telephone }}</p>
 	    <img src="../img/green-phone.png" style="position:absolute; top:21px; right:16px; width:30px; ">
 	  </div>
 

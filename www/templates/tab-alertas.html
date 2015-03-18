@@ -1,98 +1,60 @@
 <ion-view title="Alertas">
-  <ion-content class="padding">
-   
-  	<div class="list card">
 
-	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Asaltan a Carlos Corrada</h2>
-	    <p>November 05, 1955</p>
-	  </div>
+  <div class="template-divider">
 
-	  <div class="item item-body">
-	    <p>
-	      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    </p>
-	  </div>
+  		<a class="button header-nav nav-active" ng-click="backSlide()" ng-if="myActiveSlide == 0"> INCIDENTES</a> 
 
-	  <div class="item tabs tabs-secondary tabs-icon-left">
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-thumbsup"></i>
-	      Facebook
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-facebook"></i>
-	      Twitter
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-email"></i>
-	      Email
-	    </a>
-	  </div>
+  		<a class="button header-nav" ng-click="backSlide()" ng-if="myActiveSlide == 1"> ALERTAS</a> 
 
-	</div>
+  		<a class="button header-nav" ng-click="nextSlide()" ng-if="myActiveSlide == 0"> REPORTES</a>
 
-	<div class="list card">
+  		<a class="button header-nav nav-active" ng-click="nextSlide()" ng-if="myActiveSlide == 1"> REPORTES</a>
+  		
+  	</div>
 
-	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Asaltan a Carlos Corrada</h2>
-	    <p>November 05, 1955</p>
-	  </div>
+  <ion-content class="padding" style="margin-top:50px;">
 
-	  <div class="item item-body">
-	    <p>
-	      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    </p>
-	  </div>
+  	<ion-slide-box on-slide-changed="indexUpdate($index)" show-pager="false">
+	  <ion-slide>
+	    <div class="list card" ng-repeat="alerta in alertas">
 
-	  <div class="item tabs tabs-secondary tabs-icon-left">
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-thumbsup"></i>
-	      Facebook
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-facebook"></i>
-	      Twitter
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-email"></i>
-	      Email
-	    </a>
-	  </div>
+		  <div class="item item-avatar">
+		    <img src="../img/small-map.png">
+		    <h2>{{ alerta.title }}</h2>
+		    <p>{{ alerta.incident_date }}</p>
+		  </div>
 
-	</div>
+		  <div class="item item-body">
+		    <p>
+		      {{ alerta.message }}
+		    </p>
+		  </div>
+		</div>
 
-	<div class="list card">
+		
+	  </ion-slide>
 
-	  <div class="item item-avatar">
-	    <img src="../img/small-map.png">
-	    <h2>Asaltan a Carlos Corrada</h2>
-	    <p>November 05, 1955</p>
-	  </div>
+	  <ion-slide>
+	    <div class="list card" ng-repeat="reporte in reportes">
 
-	  <div class="item item-body">
-	    <p>
-	      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    </p>
-	  </div>
+		  <div class="item item-avatar">
+		    <img src="../img/small-map.png">
+		    <h2>{{ reporte.title }}</h2>
+		    <p>{{ reporte.faculty }}</p>
+		  </div>
 
-	  <div class="item tabs tabs-secondary tabs-icon-left">
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-thumbsup"></i>
-	      Facebook
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-facebook"></i>
-	      Twitter
-	    </a>
-	    <a class="tab-item" href="#">
-	      <i class="icon ion-email"></i>
-	      Email
-	    </a>
-	  </div>
+		  <div class="item item-body">
+		    <p>
+		      {{ reporte.message }}
+		    </p>
+		  </div>
 
-	</div>
+		  
+
+		</div>
+	  </ion-slide>
+
+	</ion-slide-box>
   
   </ion-content>
 </ion-view>

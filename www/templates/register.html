@@ -1,0 +1,42 @@
+<ion-view title="Cliente">
+  <ion-content style="background-image:url('img/bg.jpg');!important">
+    
+    
+    <div class="row" style="margin-top: 10%;">
+      <div class="col">  
+        <center>
+          <img ng-src="img/miupi-login.png">
+        </center>
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input ng-model="$parent.user.email" type="text" placeholder="email" style="text-align: center;">
+      </label>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input ng-model="$parent.user.first_name" type="text" placeholder="Nombre" style="text-align: center;">
+      </label>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input ng-model="$parent.user.last_name" type="text" placeholder="Apellidos" style="text-align: center;">
+      </label>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input ng-model="$parent.user.password" type="password" placeholder="Contraseña" style="text-align: center;">
+      </label>
+    </div>
+
+    <button class="button button-block" ng-click="createUser()" style="width:95%; background-color:red; margin-left:auto; margin-right:auto; color:white; border-radius:5px;">Registrame</button>
+    <br/>
+
+    <p ng-click="loginMove()" style="color:black; margin-top: 10%; text-align:center; width:100%; text-decoration:none; font-family:helvetica; font-size:16px;">Tengo cuenta con MiUPI Watch</p>
+  </ion-content>
+</ion-view>

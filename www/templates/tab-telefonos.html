@@ -4,57 +4,29 @@
 		<iframe src="http://iupi-map.herokuapp.com/"></iframe>
 	</div>
 
-    <ion-content style="margin-top:220px;">
-	   <div class="list card">
+    <ion-content style="margin-top:220px;" >
+    	<ion-refresher
+	      pulling-text="Actualizando telefonos"
+	      on-refresh="getPhones()">
+	    </ion-refresher>
+	   <div class="list card" ng-repeat="telefono in telefonos">
 
 		  <div class="item item-avatar">
 		    <img src="../img/small-map.png">
-		    <h2>Ciencias Naturales</h2>
-		    <p>A 100 pies dde distancia</p>
+		    <h2>{{ telefono.place }}</h2>
+		    <p>{{ telefono.lat }}, {{ telefono.lon }}</p>
 		    <img src="../img/telefono-right.png" style="position:absolute; top:20px; right:21px; width:20px; ">
 		  </div>
 
 		  <div class="item item-body">
 		    <p>
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+		      {{ telefono.description }}
 		    </p>
 		  </div>
 
 		</div>
 
-		<div class="list card">
-
-		  <div class="item item-avatar">
-		    <img src="../img/small-map.png">
-		    <h2>Generales</h2>
-		    <p>A 200 pies de distancia</p>
-		    <img src="../img/telefono-right.png" style="position:absolute; top:20px; right:21px; width:20px; ">
-		  </div>
-
-		  <div class="item item-body">
-		    <p>
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-		    </p>
-		  </div>
-
-		</div>
-
-		<div class="list card">
-
-		  <div class="item item-avatar">
-		    <img src="../img/small-map.png">
-		    <h2>Complejo Deportiva</h2>
-		    <p>A 250 pies de distancia</p>
-		    <img src="../img/telefono-right.png" style="position:absolute; top:20px; right:21px; width:20px; ">
-		  </div>
-
-		  <div class="item item-body">
-		    <p>
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-		    </p>
-		  </div>
-
-		</div>
+		
 
 		
   	</ion-content>
